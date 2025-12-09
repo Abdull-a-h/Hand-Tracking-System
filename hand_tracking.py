@@ -20,6 +20,7 @@ class HandDetector:
         self.detection_con = detection_con
         self.track_con = track_con
         
+
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands(
             static_image_mode=self.mode,

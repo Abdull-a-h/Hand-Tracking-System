@@ -1,302 +1,157 @@
-# Advanced Hand Tracking System
+# Advanced Hand Tracking & Game Controller
 
-A real-time computer vision application that uses AI-powered hand tracking for gesture recognition, virtual drawing, volume control, and interactive gaming.
+A comprehensive real-time computer vision system that combines AI-powered utilities with specialized game controllers. This project functions as an all-in-one suite for gesture recognition, virtual arts, system control, and hands-free gaming (specifically optimized for Hill Climb Racing).
 
+## Features Overview
 
-## Features
+### Utility Modules
+- **Gesture Recognition:** Real-time detection of 10+ specific hand signs with analytics
+- **Virtual Air Painter:** Draw on screen using your index finger with a color palette
+- **Volume Controller:** Adjust system audio by pinching fingers in the air
+- **Mouse/Keyboard Simulation:** Map gestures to physical inputs
 
-### Mode 1: Gesture Recognition & Tracking
-- **Real-time gesture detection** with 10+ recognizable gestures
-- **Color-coded visualization** for easy gesture identification
-- **Multi-hand tracking** (up to 2 hands simultaneously)
-- **Hand orientation detection** (Left/Right hand classification)
-- **21-point landmark tracking** per hand
-- **Live FPS monitoring** for performance tracking
-
-**Supported Gestures:**
-- ✊ Fist
-- 👍 Thumbs Up / 👎 Thumbs Down
-- ☝️ Pointing
-- ✌️ Peace / Victory Sign
-- 🔢 Number counting (1-5)
-- 👌 OK Sign
-- 🤘 Rock On
-- 🤙 Call Me (Shaka)
-- 🕷️ Spiderman
-
-### Mode 2: Virtual Air Painter
-- **Draw in the air** using your index finger
-- **5 color palette**: Red, Green, Blue, Yellow, White
-- **Real-time canvas overlay** on video feed
-- **Smooth line drawing** with motion tracking
-- **Clear canvas functionality**
-- **Touch-free color selection**
-
-### Mode 3: Volume Controller
-- **Control system volume** using hand gestures
-- **Pinch gesture** (thumb + index finger distance)
-- **Visual feedback** with live volume bar
-- **Smooth volume transitions**
-- **Distance-based control** (30-300 pixels range)
-- **Real-time percentage display**
-
-### Mode 4: Interactive Game
-- **Target shooting game** controlled by hand gestures
-- **Point and shoot** with index finger
-- **Dynamic target spawning**
-- **Score tracking system**
-- **Collision detection**
-- **Increasing difficulty**
-
+### Gaming Modules
+- **Hill Climb Racing Controller:** Play driving games using hand gestures (Open Palm for Gas, Fist for Brake)
+- **Target Shooting:** An interactive point-and-shoot game built directly into the CV interface
+- **FPS Monitoring:** Live performance tracking for low-latency gaming
 
 ## Installation
 
 ### Prerequisites
 - Python 3.8 or higher
-- Webcam
-- Windows OS (for volume control feature)
+- Webcam (Internal or External)
+- Windows OS (Required for Volume Control and Game Automation features)
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/yourusername/advanced-hand-tracking.git
-cd advanced-hand-tracking
+git clone https://github.com/Abdull-a-h/Hand-Tracking-System.git
+cd hand-tracking-suite
 ```
 
 ### Step 2: Create Virtual Environment (Recommended)
 ```bash
-# Windows
 python -m venv venv
+
+# Windows
 venv\Scripts\activate
 
 # Linux/Mac
-python3 -m venv venv
 source venv/bin/activate
 ```
 
 ### Step 3: Install Dependencies
-```bash
-# Core dependencies (required)
-pip install opencv-python mediapipe numpy
+This project requires several libraries for vision (OpenCV/MediaPipe) and input automation (PyAutoGUI/PyCaw).
 
-# Volume control dependencies (optional - Windows only)
-pip install pycaw comtypes
+```bash
+pip install opencv-python mediapipe numpy pyautogui pynput pycaw comtypes
 ```
 
-### Alternative: Install from requirements.txt
-```bash
-pip install -r requirements.txt
-```
+## Quick Start & Usage
 
-## Usage
+This suite is divided into two main execution scripts based on your needs.
 
-### Running the Application
+### Option A: The Utility Suite (Painting, Volume, Analytics)
+Run the main tracking application:
+
 ```bash
 python hand_tracking.py
 ```
 
-### Quick Start Guide
-1. **Launch** the application
-2. **Position yourself** in front of the webcam (arm's length distance recommended)
-3. **Ensure good lighting** for optimal hand detection
-4. **Press number keys** to switch between modes
-5. **Make gestures** and see real-time recognition!
+**Available Modes:**
+- Key `1`: Tracking & Analytics Mode
+- Key `2`: Virtual Air Painter Mode
+- Key `3`: Volume Control Mode
+- Key `4`: Target Practice Game
 
-## Controls
+### Option B: Hill Climb Racing Controller
+Run the dedicated game controller script:
 
-| Key | Action | Description |
-|-----|--------|-------------|
-| **1** | Tracking Mode | Gesture recognition and hand analytics |
-| **2** | Drawing Mode | Virtual air painter |
-| **3** | Volume Control | System volume adjustment |
-| **4** | Game Mode | Interactive target shooting |
-| **C** | Clear/Reset | Clear canvas or reset game score |
-| **Q** | Quit | Exit application |
+```bash
+python hill_climbing.py
+```
 
-## How It Works
+Follow the on-screen prompts to map the Gas and Brake pedals to your screen coordinates.
 
-### Mode-Specific Instructions
+## Module Details
 
-#### Tracking Mode
-- Simply make gestures in front of the camera
-- Watch real-time recognition with color-coded labels
-- Observe finger states and hand orientation
-- Multiple gestures detected simultaneously
+### Mode 1: Gesture Recognition (Analytics)
+**Usage:** Simply move your hands in front of the camera.
 
-#### Drawing Mode
-1. **Extend index finger only** to draw
-2. **Touch color boxes** at top to change color
-3. **Make peace sign** (index + middle) to pause drawing
-4. **Press C** to clear the canvas
-5. Lines appear with transparency overlay
+**Features:** Displays active landmarks (21 points), hand orientation (Left/Right), and classifies gestures (Peace, Thumbs Up, OK, Spiderman, etc.).
 
-#### Volume Control Mode
-1. **Extend thumb and index finger** (pinch gesture)
-2. **Move fingers apart** to increase volume
-3. **Bring fingers together** to decrease volume
-4. **Visual bar** shows current volume level
-5. Works with Windows system audio
+### Mode 2: Virtual Air Painter
+- **Draw:** Extend your index finger to draw
+- **Select Color:** Point your finger at the color boxes (Red, Green, Blue, Yellow) at the top of the screen
+- **Pause:** Show a Peace Sign (Index + Middle) to move without drawing
+- **Clear:** Press `C` on the keyboard or select the Eraser tool
 
-#### Game Mode
-1. **Point with index finger** at red circular targets
-2. **Touch targets** to destroy them and score points
-3. **Targets spawn randomly** on screen
-4. **Track your score** in top-right corner
-5. **Press C** to reset score
+### Mode 3: Volume Controller
+- **Activate:** Extend Thumb and Index finger
+- **Adjust:** Pinch fingers (bring them closer) to lower volume; separate them to raise volume
+- **Feedback:** A visual bar and percentage indicator show real-time levels
+
+### Mode 4: Hill Climb Racing Controller
+- **Setup:** On launch, select Option 1 (Mouse Control). Hover your mouse over the game's Gas Pedal and press Enter, then repeat for the Brake Pedal
+- **GAS (Accelerate):** Show an Open Palm (4 or 5 fingers)
+- **BRAKE (Stop):** Show a Closed Fist (0 fingers)
+- **NEUTRAL (Coast):** Show partial hand (1-3 fingers)
+- **Toggle:** Press `SPACE` to pause/resume control capabilities
+
+## Controls Summary
+
+| Key | Context | Action |
+|-----|---------|--------|
+| 1-4 | Utility Suite | Switch between Analytics, Paint, Volume, and Target Game |
+| Space | Game Controller | Toggle game control ON/OFF (Pause) |
+| R | Game Controller | Reconfigure pedal positions |
+| C | Utility Suite | Clear Canvas / Reset Score |
+| Q | Global | Quit Application |
+
+## Technical Architecture
+
+This system relies on MediaPipe for hand landmark detection. It utilizes a 21-point skeleton model to calculate gesture logic.
+
+### Logic Flow
+1. **Image Capture:** OpenCV reads frames from the webcam
+2. **Detection:** MediaPipe extracts (x, y, z) coordinates for 21 hand landmarks
+3. **Finger Analysis:** Algorithm determines which fingers are extended based on landmark tip vs. knuckle positions
+4. **Gesture Matching:**
+   - If Thumb+Index extended & distance < threshold → Volume Mode
+   - If Index extended only → Drawing Mode
+   - If All fingers folded → Brake (Game Mode)
+5. **Action Dispatch:** Triggers PyAutoGUI (Mouse clicks) or PyCaw (System Audio)
 
 ## Project Structure
 
 ```
-advanced-hand-tracking/
+hand-tracking-suite/
 │
-├── hand_tracking.py          # Main application file
-├── requirements.txt          # Python dependencies
-├── README.md                 # This file
+├── hand_tracking.py           # Main Utility App (Modes 1-4)
+├── hill_climbing.py         # Dedicated Hill Climb Racing App
+├── facial_feature.py    
+├── requirements.txt           # Dependencies
+└── README.md                  # Documentation
 ```
-
-## Technical Details
-
-### Technologies Used
-- **OpenCV**: Real-time computer vision and image processing
-- **MediaPipe**: Google's ML solution for hand landmark detection
-- **NumPy**: Numerical computing and array operations
-- **PyCaw**: Windows Core Audio API wrapper (volume control)
-
-### System Architecture
-
-```
-┌─────────────────┐
-│  Video Capture  │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  MediaPipe Hand │
-│    Detection    │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│   Landmark      │
-│   Extraction    │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│    Gesture      │
-│  Recognition    │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Mode-Specific  │
-│    Processing   │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Visualization  │
-│   & Display     │
-└─────────────────┘
-```
-
-### Hand Landmark Model
-MediaPipe detects **21 landmarks** per hand:
-
-```
-       8   12  16  20
-       |   |   |   |
-   4---5---9--13--17  (finger tips)
-   |   |   |   |   |
-   3   6--10--14--18  (joints)
-   |   |   |   |   |
-   2   7--11--15--19
-   |
-   1
-   |
-   0 (wrist)
-```
-
-### Gesture Recognition Algorithm
-1. **Finger State Detection**: Determines which fingers are extended
-2. **Pattern Matching**: Compares finger states to known patterns
-3. **Distance Calculation**: Measures spacing between landmarks
-4. **Orientation Analysis**: Determines hand position and direction
-5. **Stability Tracking**: Confirms gesture held over multiple frames
-
-## Performance
-
-### Benchmarks
-- **FPS**: 25-35 on average hardware (1280x720)
-- **Latency**: <50ms gesture recognition
-- **Accuracy**: ~95% in good lighting conditions
-- **CPU Usage**: 15-25% on modern processors
-
-### Optimization Tips
-- Lower camera resolution for better FPS
-- Increase detection confidence for fewer false positives
-- Close background applications
-- Ensure good lighting (reduces processing time)
 
 ## Troubleshooting
 
 ### Common Issues
 
-#### Camera Not Opening
-```python
-# Error: Can't open camera
-Solution: Check if camera is being used by another application
-         Try changing camera index: VideoCapture(1) instead of VideoCapture(0)
-```
+#### 1. "No Hand Detected"
+- **Lighting:** Ensure the room is well-lit. Backlighting (window behind you) kills detection
+- **Distance:** Keep hands 1-2 feet from the camera
+- **Background:** A plain background helps the AI distinguish hands from clutter
 
-#### Low FPS / Lag
-```python
-# Solution 1: Reduce resolution
-cap.set(3, 640)   # Width
-cap.set(4, 480)   # Height
+#### 2. Game Controller Not Clicking
+- **Window Focus:** Ensure the game window is active (clicked on)
+- **Admin Rights:** Some games require the script to be run as Administrator to accept simulated inputs
+- **Configuration:** Press `R` to re-map the pedal coordinates if you moved the game window
 
-# Solution 2: Increase confidence thresholds
-detector = HandDetector(detection_con=0.8, track_con=0.8)
-```
+#### 3. Jittery Cursor / Drawing
+- **Stability:** Keep your hand steady
+- **Confidence:** Open the code and increase `detection_con` to 0.8
+- **Smoothening:** The code implements a moving average to smooth movement; do not move too fast
 
-#### Hands Not Detected
-- Ensure good lighting (avoid backlighting)
-- Keep hands clearly visible (not too close or far)
-- Check camera focus
-- Increase hand contrast with background
-- Lower detection confidence: `detection_con=0.5`
-
-#### Volume Control Not Working
-```bash
-# Install Windows audio dependencies
-pip install pycaw comtypes
-
-# Run as administrator if permission issues occur
-```
-
-#### Gesture Flickering
-- Increase `gesture_hold_frames` threshold
-- Improve lighting conditions
-- Reduce camera noise
-- Increase tracking confidence
-
-### Error Messages
-
-| Error | Cause | Solution |
-|-------|-------|----------|
-| `ModuleNotFoundError: No module named 'cv2'` | OpenCV not installed | `pip install opencv-python` |
-| `No module named 'mediapipe'` | MediaPipe not installed | `pip install mediapipe` |
-| `Camera index out of range` | Wrong camera index | Try different index (0, 1, 2) |
-| `Volume control unavailable` | PyCaw not installed | `pip install pycaw comtypes` |
-
-
-## 📈 Future Enhancements
-
-### Planned Features
-- [ ] Custom gesture training module
-- [ ] Mouse cursor control with hands
-- [ ] Sign language recognition
-- [ ] Multi-hand gesture combinations
-- [ ] Gesture macro recording
-- [ ] Web-based interface
-
-
+#### 4. Volume Control Not Working
+- Ensure you have installed `pycaw` and `comtypes`
+- This feature is strictly Windows only
